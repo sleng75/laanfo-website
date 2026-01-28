@@ -1,11 +1,11 @@
 # Déploiement automatique vers VPS Hostinger
-# Déclenché à chaque push sur la branche master
+# Déclenché à chaque push sur la branche main
 
 name: Deploy to VPS
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   workflow_dispatch:  # Permet le déclenchement manuel
 
 jobs:
@@ -38,7 +38,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/main'
 
     steps:
       - name: Download build artifact
