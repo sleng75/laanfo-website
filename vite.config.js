@@ -2,6 +2,9 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
 export default defineConfig({
+  // Base URL pour GitHub Pages (défini via variable d'environnement)
+  base: process.env.BASE_URL || '/',
+
   // Le dossier racine contenant le code source
   root: 'src',
 
