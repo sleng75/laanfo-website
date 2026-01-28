@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" fill="none">
+  <defs>
+    <linearGradient id="mapBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16213e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#d7bfa4;stop-opacity:0.3" />
+      <stop offset="50%" style="stop-color:#C4A862;stop-opacity:0.5" />
+      <stop offset="100%" style="stop-color:#d7bfa4;stop-opacity:0.3" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="400" fill="url(#mapBg)"/>
+
+  <!-- Grid pattern -->
+  <g stroke="#2a2a4a" stroke-width="0.5" opacity="0.5">
+    <line x1="0" y1="50" x2="1200" y2="50"/>
+    <line x1="0" y1="100" x2="1200" y2="100"/>
+    <line x1="0" y1="150" x2="1200" y2="150"/>
+    <line x1="0" y1="200" x2="1200" y2="200"/>
+    <line x1="0" y1="250" x2="1200" y2="250"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/>
+    <line x1="0" y1="350" x2="1200" y2="350"/>
+    <line x1="100" y1="0" x2="100" y2="400"/>
+    <line x1="200" y1="0" x2="200" y2="400"/>
+    <line x1="300" y1="0" x2="300" y2="400"/>
+    <line x1="400" y1="0" x2="400" y2="400"/>
+    <line x1="500" y1="0" x2="500" y2="400"/>
+    <line x1="600" y1="0" x2="600" y2="400"/>
+    <line x1="700" y1="0" x2="700" y2="400"/>
+    <line x1="800" y1="0" x2="800" y2="400"/>
+    <line x1="900" y1="0" x2="900" y2="400"/>
+    <line x1="1000" y1="0" x2="1000" y2="400"/>
+    <line x1="1100" y1="0" x2="1100" y2="400"/>
+  </g>
+
+  <!-- Simplified world map outline -->
+  <g fill="url(#goldGradient)" opacity="0.3">
+    <!-- Europe -->
+    <path d="M550 120 Q580 100 620 110 Q650 90 680 100 Q700 110 720 120 Q740 130 760 140 Q780 160 770 180 Q750 200 720 190 Q690 180 660 170 Q630 160 600 150 Q570 140 550 120Z"/>
+
+    <!-- Africa -->
+    <path d="M580 200 Q620 190 660 200 Q700 220 720 260 Q730 300 710 340 Q680 370 640 360 Q600 340 580 300 Q570 260 580 200Z"/>
+
+    <!-- Middle East -->
+    <path d="M720 150 Q760 140 800 150 Q830 170 820 200 Q800 230 760 220 Q730 200 720 150Z"/>
+  </g>
+
+  <!-- Location markers -->
+  <!-- Paris -->
+  <g transform="translate(590, 130)">
+    <circle r="8" fill="#C4A862" opacity="0.8">
+      <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;0.4;0.8" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="4" fill="#d7bfa4"/>
+  </g>
+
+  <!-- Burkina Faso -->
+  <g transform="translate(560, 250)">
+    <circle r="8" fill="#C4A862" opacity="0.8">
+      <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite" begin="0.3s"/>
+      <animate attributeName="opacity" values="0.8;0.4;0.8" dur="2s" repeatCount="indefinite" begin="0.3s"/>
+    </circle>
+    <circle r="4" fill="#d7bfa4"/>
+  </g>
+
+  <!-- Senegal -->
+  <g transform="translate(480, 230)">
+    <circle r="6" fill="#C4A862" opacity="0.6">
+      <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite" begin="0.6s"/>
+      <animate attributeName="opacity" values="0.6;0.3;0.6" dur="2s" repeatCount="indefinite" begin="0.6s"/>
+    </circle>
+    <circle r="3" fill="#d7bfa4"/>
+  </g>
+
+  <!-- Cote d'Ivoire -->
+  <g transform="translate(520, 280)">
+    <circle r="6" fill="#C4A862" opacity="0.6">
+      <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite" begin="0.9s"/>
+      <animate attributeName="opacity" values="0.6;0.3;0.6" dur="2s" repeatCount="indefinite" begin="0.9s"/>
+    </circle>
+    <circle r="3" fill="#d7bfa4"/>
+  </g>
+
+  <!-- Connection lines -->
+  <g stroke="#C4A862" stroke-width="1" opacity="0.3" stroke-dasharray="5,5">
+    <line x1="590" y1="130" x2="560" y2="250"/>
+    <line x1="560" y1="250" x2="480" y2="230"/>
+    <line x1="560" y1="250" x2="520" y2="280"/>
+  </g>
+</svg>

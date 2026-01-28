@@ -1,0 +1,233 @@
+/* ================================================
+   LAANFO C&M - Fichier CSS Principal
+
+   Ce fichier importe tous les styles dans le bon ordre.
+   L'ordre est important car CSS est "en cascade" :
+   les styles définis plus tard écrasent ceux d'avant.
+
+   Supporte le système Light/Dark mode via tokens sémantiques.
+   ================================================ */
+
+/* =============================================
+   1. BASE - Fondations du design system
+   ============================================= */
+
+/* Variables (couleurs, tailles, etc.) - TOUJOURS en premier
+   Inclut le système de tokens pour Light/Dark mode */
+@import './base/_variables.css';
+
+/* Reset (normalisation des navigateurs) */
+@import './base/_reset.css';
+
+/* Typographie (polices et styles de texte) */
+@import './base/_typography.css';
+
+/* Accessibilité (WCAG 2.1 AA) */
+@import './base/_accessibility.css';
+
+/* =============================================
+   2. COMPONENTS - Éléments réutilisables
+   ============================================= */
+
+@import './components/_buttons.css';
+@import './components/_cards.css';
+@import './components/_forms.css';
+@import './components/_preloader.css';
+@import './components/_theme-toggle.css';
+@import './components/_floating-buttons.css';
+@import './components/_page-header.css';
+@import './components/_cta-section.css';
+@import './components/_page-transition.css';
+@import './components/_cursor.css';
+
+/* =============================================
+   3. LAYOUTS - Structure de page
+   ============================================= */
+
+@import './layouts/_navigation.css';
+@import './layouts/_footer.css';
+
+/* =============================================
+   4. PAGES - Styles spécifiques aux pages
+   ============================================= */
+
+@import './pages/_home.css';
+@import './pages/_about.css';
+@import './pages/_services.css';
+@import './pages/_contact.css';
+@import './pages/_actualites.css';
+
+/* =============================================
+   5. UTILITAIRES GLOBAUX
+   ============================================= */
+
+/* Conteneur principal */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+/* Sections avec espacement vertical */
+.section {
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-16);
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-top: var(--space-24);
+    padding-bottom: var(--space-24);
+  }
+}
+
+/* =============================================
+   BACKGROUNDS - Utilitaires avec support thème
+   ============================================= */
+
+/* Backgrounds sémantiques (s'adaptent au thème) */
+.bg-primary { background-color: var(--bg-primary); }
+.bg-secondary { background-color: var(--bg-secondary); }
+.bg-tertiary { background-color: var(--bg-tertiary); }
+.bg-elevated { background-color: var(--bg-elevated); }
+.bg-inverse { background-color: var(--bg-inverse); }
+
+/* Backgrounds fixes (ne changent pas avec le thème) */
+.bg-dark { background-color: var(--color-neutral-950); color: var(--color-neutral-0); }
+.bg-light { background-color: var(--color-neutral-100); }
+.bg-white { background-color: var(--color-neutral-0); }
+.bg-gold { background-color: var(--color-gold-400); }
+.bg-accent { background-color: var(--bg-accent-subtle); }
+
+/* =============================================
+   TEXTE - Utilitaires supplémentaires
+   (Les classes de base sont dans _typography.css)
+   ============================================= */
+
+.text-muted { color: var(--text-muted); }
+
+/* =============================================
+   FLEXBOX UTILITAIRES
+   ============================================= */
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-4 { gap: var(--space-4); }
+.gap-6 { gap: var(--space-6); }
+.gap-8 { gap: var(--space-8); }
+
+/* =============================================
+   ESPACEMENT (MARGIN)
+   ============================================= */
+
+.mt-4 { margin-top: var(--space-4); }
+.mt-6 { margin-top: var(--space-6); }
+.mt-8 { margin-top: var(--space-8); }
+.mb-4 { margin-bottom: var(--space-4); }
+.mb-6 { margin-bottom: var(--space-6); }
+.mb-8 { margin-bottom: var(--space-8); }
+
+/* =============================================
+   6. SMOOTH SCROLL (pour Lenis)
+   ============================================= */
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* =============================================
+   7. ANIMATIONS GLOBALES (GSAP)
+   ============================================= */
+
+/* Barre de progression de scroll */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--color-gold-600) 0%,
+    var(--color-gold-400) 50%,
+    var(--color-gold-300) 100%
+  );
+  transform-origin: left center;
+  z-index: var(--z-fixed);
+  pointer-events: none;
+}
+
+/* Visibilité initiale des éléments animés */
+[data-animate] {
+  will-change: transform, opacity;
+}
+
+/* Curseur personnalisé pour les éléments interactifs */
+[data-magnetic],
+[data-lift],
+[data-tilt] {
+  cursor: pointer;
+}
+
+/* État de focus pour les éléments avec tilt */
+[data-tilt]:focus-visible {
+  outline: 2px solid var(--color-gold-400);
+  outline-offset: 4px;
+}
+
+/* =============================================
+   8. TRANSITIONS DE THÈME
+
+   Classe ajoutée temporairement lors du
+   changement de thème pour une transition fluide.
+   Note: Une définition plus complète existe dans
+   _variables.css - celle-ci ajoute fill et stroke.
+   ============================================= */
+
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+  transition:
+    background-color var(--duration-theme) var(--ease-out),
+    border-color var(--duration-theme) var(--ease-out),
+    color var(--duration-theme) var(--ease-out),
+    fill var(--duration-theme) var(--ease-out),
+    stroke var(--duration-theme) var(--ease-out),
+    box-shadow var(--duration-theme) var(--ease-out) !important;
+}
+
+/* =============================================
+   9. ACCESSIBILITÉ - Réduction des animations
+   ============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress-bar {
+    display: none;
+  }
+
+  [data-animate],
+  [data-parallax],
+  [data-lift],
+  [data-magnetic],
+  [data-tilt] {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}

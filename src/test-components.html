@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>LAANFO C&M - Test Phase 1.2 Composants + Thème Light/Dark</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./styles/main.css" />
+  </head>
+  <body class="is-loading">
+    <!-- ================================================
+         PRELOADER ENRICHI
+         ================================================ -->
+    <div class="preloader">
+      <!-- Conteneur logo avec effets -->
+      <div class="preloader__logo-wrapper">
+        <!-- Cercles lumineux -->
+        <div class="preloader__logo-ring"></div>
+        <div class="preloader__logo-ring"></div>
+        <div class="preloader__logo-ring"></div>
+
+        <!-- Logo symbole LAANFO -->
+        <img src="./assets/logo/symbole-laanfo.svg" alt="LAANFO C&M" class="preloader__logo" width="100" height="82">
+
+        <!-- Titre et sous-titre -->
+        <span class="preloader__title">LAANFO</span>
+        <span class="preloader__subtitle">Conseil & Management</span>
+      </div>
+
+      <!-- Barre de progression avec pourcentage -->
+      <div class="preloader__progress-wrapper">
+        <div class="preloader__progress">
+          <div class="preloader__progress-bar"></div>
+        </div>
+        <span class="preloader__percentage">0%</span>
+      </div>
+
+      <!-- Texte de chargement animé -->
+      <div class="preloader__text">
+        <span>C</span><span>h</span><span>a</span><span>r</span><span>g</span><span>e</span><span>m</span><span>e</span><span>n</span><span>t</span>
+        <div class="preloader__dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================================================
+         HEADER ENRICHI
+         ================================================ -->
+    <header class="header">
+      <div class="header__inner">
+        <!-- Logo -->
+        <a href="/" class="header__logo">
+          <img src="./assets/logo/logo-laanfo.svg" alt="LAANFO C&M" height="50">
+        </a>
+
+        <!-- Navigation Desktop -->
+        <nav class="nav">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="/" class="nav__link is-active">Accueil</a>
+            </li>
+            <li class="nav__item">
+              <a href="/a-propos.html" class="nav__link">À propos</a>
+            </li>
+            <!-- Item avec dropdown Services -->
+            <li class="nav__item">
+              <a href="/services.html" class="nav__link">
+                Services
+                <svg class="nav__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <!-- Dropdown des services -->
+              <div class="nav__dropdown">
+                <a href="/services.html#qse" class="nav__dropdown-link">
+                  <svg class="nav__dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                  <div>
+                    <span>Conseil QSE</span>
+                    <span class="nav__dropdown-desc">Qualité, Sécurité, Environnement</span>
+                  </div>
+                </a>
+                <a href="/services.html#rse" class="nav__dropdown-link">
+                  <svg class="nav__dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                  </svg>
+                  <div>
+                    <span>Conseil RSE</span>
+                    <span class="nav__dropdown-desc">Responsabilité Sociétale</span>
+                  </div>
+                </a>
+                <div class="nav__dropdown-divider"></div>
+                <a href="/services.html#audit" class="nav__dropdown-link">
+                  <svg class="nav__dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
+                  <div>
+                    <span>Audit & Diagnostic</span>
+                    <span class="nav__dropdown-desc">Évaluation de vos systèmes</span>
+                  </div>
+                </a>
+                <a href="/services.html#formation" class="nav__dropdown-link">
+                  <svg class="nav__dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                  </svg>
+                  <div>
+                    <span>Formation</span>
+                    <span class="nav__dropdown-desc">Développez vos compétences</span>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li class="nav__item">
+              <a href="/actualites.html" class="nav__link">Actualités</a>
+            </li>
+            <li class="nav__item">
+              <a href="/contact.html" class="nav__link">Contact</a>
+            </li>
+          </ul>
+          <div class="nav__cta">
+            <a href="/contact.html" class="btn btn--primary btn--sm">Nous contacter</a>
+          </div>
+          <!-- Theme Toggle dans le header -->
+          <div class="header__theme-toggle">
+            <button class="theme-toggle" aria-label="Changer le thème">
+              <!-- Icône Soleil (Light mode) -->
+              <svg class="theme-toggle__icon theme-toggle__icon--sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+              <!-- Icône Lune (Dark mode) -->
+              <svg class="theme-toggle__icon theme-toggle__icon--moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+            </button>
+          </div>
+        </nav>
+
+        <!-- Menu Toggle (Mobile) -->
+        <button class="header__menu-toggle" aria-label="Menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <!-- Indicateur de progression de lecture -->
+      <div class="header__scroll-indicator"></div>
+    </header>
+
+    <!-- Menu Mobile Enrichi -->
+    <nav class="mobile-menu" aria-hidden="true">
+      <!-- Overlay -->
+      <div class="mobile-menu__overlay"></div>
+
+      <div class="mobile-menu__inner">
+        <!-- En-tête avec logo -->
+        <div class="mobile-menu__header">
+          <img src="./assets/logo/symbole-laanfo.svg" alt="" class="mobile-menu__logo" height="40">
+        </div>
+
+        <!-- Liste de navigation -->
+        <ul class="mobile-menu__list">
+          <li class="mobile-menu__item">
+            <a href="/" class="mobile-menu__link is-active">
+              Accueil
+              <span class="mobile-menu__number">01</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a href="/a-propos.html" class="mobile-menu__link">
+              À propos
+              <span class="mobile-menu__number">02</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a href="/services.html" class="mobile-menu__link">
+              Services
+              <span class="mobile-menu__number">03</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a href="/actualites.html" class="mobile-menu__link">
+              Actualités
+              <span class="mobile-menu__number">04</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a href="/contact.html" class="mobile-menu__link">
+              Contact
+              <span class="mobile-menu__number">05</span>
+            </a>
+          </li>
+        </ul>
+
+        <!-- Footer avec contact et réseaux -->
+        <div class="mobile-menu__footer">
+          <!-- Infos de contact -->
+          <div class="mobile-menu__contact">
+            <a href="mailto:contact@laanfo-cm.com" class="mobile-menu__contact-item">
+              <svg class="mobile-menu__contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              contact@laanfo-cm.com
+            </a>
+            <a href="tel:+237600000000" class="mobile-menu__contact-item">
+              <svg class="mobile-menu__contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              +237 6 00 00 00 00
+            </a>
+          </div>
+
+          <!-- Réseaux sociaux -->
+          <div class="mobile-menu__social">
+            <a href="#" class="mobile-menu__social-link" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            <a href="#" class="mobile-menu__social-link" aria-label="Twitter">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+              </svg>
+            </a>
+            <a href="#" class="mobile-menu__social-link" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg>
+            </a>
+          </div>
+
+          <!-- CTA -->
+          <div class="mobile-menu__cta">
+            <a href="/contact.html" class="btn btn--primary">Demander un devis</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ================================================
+         CONTENU PRINCIPAL
+         ================================================ -->
+    <main style="padding-top: 120px;">
+
+      <!-- SECTION : Introduction + Theme Toggle Demo -->
+      <section class="section container">
+        <span class="overline">Phase 1.2 + Light/Dark Mode</span>
+        <h1 class="display-lg mb-8">Composants UI</h1>
+
+        <!-- Demo du Theme Toggle -->
+        <div class="mb-8" style="padding: var(--space-6); background-color: var(--bg-secondary); border-radius: var(--radius-lg);">
+          <h2 class="heading-3 mb-4">Theme Toggle</h2>
+          <p class="body-lg mb-6 text-secondary">Cliquez sur le bouton ci-dessous ou celui dans le header pour changer de thème.</p>
+
+          <div class="flex items-center gap-6">
+            <!-- Toggle Standard -->
+            <button class="theme-toggle" aria-label="Changer le thème">
+              <svg class="theme-toggle__icon theme-toggle__icon--sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+              <svg class="theme-toggle__icon theme-toggle__icon--moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+            </button>
+
+            <!-- Toggle Compact -->
+            <button class="theme-toggle theme-toggle--sm" aria-label="Changer le thème (petit)">
+              <svg class="theme-toggle__icon theme-toggle__icon--sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+              <svg class="theme-toggle__icon theme-toggle__icon--moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+            </button>
+
+            <span class="text-tertiary">Standard / Compact</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION : Boutons -->
+      <section class="section container">
+        <div class="mb-8">
+          <h2 class="heading-2 mb-6">Boutons</h2>
+
+          <h3 class="heading-4 mb-4">Variantes</h3>
+          <div class="btn-group mb-6">
+            <a href="#" class="btn btn--primary">Primary</a>
+            <a href="#" class="btn btn--secondary">Secondary</a>
+            <a href="#" class="btn btn--outline">Outline</a>
+            <a href="#" class="btn btn--ghost">Ghost</a>
+          </div>
+
+          <h3 class="heading-4 mb-4">Tailles</h3>
+          <div class="btn-group items-center mb-6">
+            <a href="#" class="btn btn--primary btn--sm">Small</a>
+            <a href="#" class="btn btn--primary btn--md">Medium</a>
+            <a href="#" class="btn btn--primary btn--lg">Large</a>
+          </div>
+
+          <h3 class="heading-4 mb-4">États</h3>
+          <div class="btn-group mb-6">
+            <a href="#" class="btn btn--primary">Normal</a>
+            <a href="#" class="btn btn--primary is-loading">Loading</a>
+            <a href="#" class="btn btn--primary is-disabled">Disabled</a>
+          </div>
+
+          <h3 class="heading-4 mb-4">Sur fond sombre</h3>
+          <div class="bg-dark" style="padding: var(--space-6); border-radius: var(--radius-lg);">
+            <div class="btn-group">
+              <a href="#" class="btn btn--primary">Primary</a>
+              <a href="#" class="btn btn--outline-light">Outline Light</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION : Cards -->
+      <section class="section container bg-secondary">
+        <h2 class="heading-2 mb-6">Cards</h2>
+
+        <h3 class="heading-4 mb-4">Card Standard</h3>
+        <div class="card-grid card-grid--3 mb-8">
+          <article class="card" data-lift>
+            <img src="https://picsum.photos/400/250?random=1" alt="" class="card__image">
+            <div class="card__content">
+              <h4 class="card__title">Titre de la card</h4>
+              <p class="card__description">Description de la card avec du texte explicatif pour montrer comment le contenu s'affiche.</p>
+            </div>
+          </article>
+          <article class="card" data-lift>
+            <img src="https://picsum.photos/400/250?random=2" alt="" class="card__image">
+            <div class="card__content">
+              <h4 class="card__title">Autre titre</h4>
+              <p class="card__description">Une autre description pour cette card exemple.</p>
+            </div>
+          </article>
+          <article class="card" data-lift>
+            <img src="https://picsum.photos/400/250?random=3" alt="" class="card__image">
+            <div class="card__content">
+              <h4 class="card__title">Troisième card</h4>
+              <p class="card__description">Contenu de la troisième card pour illustrer la grille.</p>
+            </div>
+          </article>
+        </div>
+
+        <h3 class="heading-4 mb-4">Service Cards</h3>
+        <div class="card-grid card-grid--3 mb-8">
+          <article class="card card--service">
+            <span class="card__number">01</span>
+            <h4 class="card__title">Optimisation de la Performance</h4>
+            <p class="card__description">Améliorer l'efficacité opérationnelle de votre entreprise grâce à des méthodes éprouvées.</p>
+          </article>
+          <article class="card card--service">
+            <span class="card__number">02</span>
+            <h4 class="card__title">Gestion de Projets</h4>
+            <p class="card__description">Accompagnement personnalisé dans la conduite de vos projets stratégiques.</p>
+          </article>
+          <article class="card card--service">
+            <span class="card__number">03</span>
+            <h4 class="card__title">Maîtrise des Risques</h4>
+            <p class="card__description">Identification et gestion proactive des risques QSE de votre organisation.</p>
+          </article>
+        </div>
+
+        <h3 class="heading-4 mb-4">Value Cards (QSE)</h3>
+        <div class="card-grid card-grid--3 mb-8">
+          <article class="card card--value card--quality">
+            <h4 class="card__title">Qualité</h4>
+            <p class="card__description">L'excellence comme standard dans chaque intervention.</p>
+          </article>
+          <article class="card card--value card--safety">
+            <h4 class="card__title">Sécurité</h4>
+            <p class="card__description">Protection des personnes et des biens en priorité.</p>
+          </article>
+          <article class="card card--value card--environment">
+            <h4 class="card__title">Environnement</h4>
+            <p class="card__description">Respect et préservation de notre planète.</p>
+          </article>
+        </div>
+
+        <h3 class="heading-4 mb-4">Article Card</h3>
+        <div class="card-grid card-grid--3 mb-8">
+          <article class="card card--article">
+            <img src="https://picsum.photos/400/225?random=4" alt="" class="card__image">
+            <div class="card__content">
+              <span class="card__category">QSE</span>
+              <h4 class="card__title">Comment améliorer votre système de management</h4>
+              <div class="card__meta">
+                <span class="card__date">15 Jan 2026</span>
+              </div>
+            </div>
+          </article>
+          <article class="card card--article">
+            <img src="https://picsum.photos/400/225?random=5" alt="" class="card__image">
+            <div class="card__content">
+              <span class="card__category">RSE</span>
+              <h4 class="card__title">Les enjeux de la responsabilité sociétale</h4>
+              <div class="card__meta">
+                <span class="card__date">10 Jan 2026</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <h3 class="heading-4 mb-4">Testimonial Card</h3>
+        <div style="max-width: 500px;">
+          <article class="card card--testimonial">
+            <p class="card__quote">LAANFO C&M nous a accompagnés avec professionnalisme et expertise. Leur approche personnalisée a fait toute la différence.</p>
+            <div class="card__author">
+              <img src="https://picsum.photos/64/64?random=6" alt="" class="card__avatar">
+              <span class="card__name">Marie Dupont</span>
+              <span class="card__role">Directrice Qualité, Entreprise XYZ</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- SECTION : Formulaires -->
+      <section class="section container">
+        <h2 class="heading-2 mb-6">Formulaires</h2>
+
+        <form class="form form--centered" data-form>
+          <!-- Message d'erreur global -->
+          <div class="form-error-global"></div>
+
+          <!-- Ligne avec 2 champs -->
+          <div class="form-row form-row--2">
+            <div class="form-group form-group--floating">
+              <input type="text" id="nom" name="nom" class="form-input" required>
+              <label for="nom" class="form-label form-label--required">Nom</label>
+              <span class="form-error"></span>
+            </div>
+            <div class="form-group form-group--floating">
+              <input type="text" id="prenom" name="prenom" class="form-input" required>
+              <label for="prenom" class="form-label form-label--required">Prénom</label>
+              <span class="form-error"></span>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group form-group--floating">
+            <input type="email" id="email" name="email" class="form-input" required>
+            <label for="email" class="form-label form-label--required">Email</label>
+            <span class="form-error"></span>
+          </div>
+
+          <!-- Téléphone -->
+          <div class="form-group form-group--floating">
+            <input type="tel" id="telephone" name="telephone" class="form-input">
+            <label for="telephone" class="form-label">Téléphone</label>
+            <span class="form-hint">Format : +33 6 12 34 56 78</span>
+          </div>
+
+          <!-- Select -->
+          <div class="form-group">
+            <label for="sujet" class="form-label">Sujet</label>
+            <select id="sujet" name="sujet" class="form-select">
+              <option value="">Sélectionnez un sujet</option>
+              <option value="devis">Demande de devis</option>
+              <option value="info">Demande d'information</option>
+              <option value="partenariat">Partenariat</option>
+              <option value="autre">Autre</option>
+            </select>
+          </div>
+
+          <!-- Textarea -->
+          <div class="form-group form-group--floating">
+            <textarea id="message" name="message" class="form-textarea" rows="5" required minlength="20"></textarea>
+            <label for="message" class="form-label form-label--required">Message</label>
+            <span class="form-error"></span>
+            <span class="form-hint">Minimum 20 caractères</span>
+          </div>
+
+          <!-- Checkbox -->
+          <div class="form-group">
+            <label class="form-check">
+              <input type="checkbox" name="newsletter" class="form-check__input">
+              <span class="form-check__label">Je souhaite recevoir la newsletter</span>
+            </label>
+            <label class="form-check">
+              <input type="checkbox" name="rgpd" class="form-check__input" required>
+              <span class="form-check__label">J'accepte la politique de confidentialité *</span>
+            </label>
+          </div>
+
+          <!-- Submit -->
+          <div class="btn-group btn-group--center">
+            <button type="submit" class="btn btn--primary btn--lg">Envoyer le message</button>
+          </div>
+
+          <!-- Message de succès -->
+          <div class="form-success">
+            Merci ! Votre message a été envoyé avec succès.
+          </div>
+        </form>
+      </section>
+
+      <!-- SECTION : États de validation -->
+      <section class="section container bg-secondary">
+        <h2 class="heading-2 mb-6">États de validation</h2>
+
+        <div class="form" style="max-width: 400px;">
+          <div class="form-group">
+            <label class="form-label">Champ valide</label>
+            <input type="text" class="form-input is-valid" value="Contenu valide">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Champ invalide</label>
+            <input type="text" class="form-input is-invalid" value="Erreur">
+            <span class="form-error">Ce champ contient une erreur</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Champ désactivé</label>
+            <input type="text" class="form-input" value="Non modifiable" disabled>
+          </div>
+        </div>
+      </section>
+
+      <!-- Statut -->
+      <section class="section container">
+        <div style="padding: 2rem; background: var(--color-environment); color: white; border-radius: var(--radius-lg);">
+          <h2 class="heading-2 mb-4">Phase 1.2 Complète + Light/Dark Mode</h2>
+          <ul style="list-style: disc inside; columns: 2;">
+            <li>Boutons (primary, secondary, outline, ghost)</li>
+            <li>Tailles de boutons (sm, md, lg)</li>
+            <li>États (hover, focus, loading, disabled)</li>
+            <li>Effet ripple</li>
+            <li>Cards standard</li>
+            <li>Service cards avec numéro</li>
+            <li>Value cards QSE</li>
+            <li>Article cards</li>
+            <li>Testimonial cards</li>
+            <li>Formulaires avec labels flottants</li>
+            <li>Validation temps réel</li>
+            <li>Header sticky</li>
+            <li>Menu mobile animé</li>
+            <li>Preloader</li>
+            <li><strong>Light/Dark mode avec tokens</strong></li>
+            <li><strong>Theme Toggle bouton</strong></li>
+            <li><strong>Persistance localStorage</strong></li>
+            <li><strong>Support prefers-color-scheme</strong></li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <!-- ================================================
+         FOOTER
+         ================================================ -->
+    <footer class="footer">
+      <!-- Section principale -->
+      <div class="footer__main">
+        <div class="footer__grid">
+          <!-- Colonne Brand -->
+          <div class="footer__brand">
+            <a href="/" class="footer__logo">
+              <img src="./assets/logo/logo-laanfo.svg" alt="LAANFO C&M" height="60">
+            </a>
+            <p class="footer__description">
+              Cabinet de conseil spécialisé en Qualité, Sécurité, Environnement (QSE) et Responsabilité Sociétale des Entreprises (RSE). Nous accompagnons les organisations vers l'excellence opérationnelle.
+            </p>
+            <div class="footer__certifications">
+              <span class="footer__certification">
+                <svg class="footer__certification-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                ISO 9001
+              </span>
+              <span class="footer__certification">
+                <svg class="footer__certification-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                ISO 45001
+              </span>
+            </div>
+          </div>
+
+          <!-- Colonne Navigation -->
+          <div class="footer__column">
+            <h4 class="footer__title">Navigation</h4>
+            <ul class="footer__links">
+              <li><a href="/" class="footer__link">Accueil</a></li>
+              <li><a href="/a-propos.html" class="footer__link">À propos</a></li>
+              <li><a href="/services.html" class="footer__link">Services</a></li>
+              <li><a href="/actualites.html" class="footer__link">Actualités</a></li>
+              <li><a href="/contact.html" class="footer__link">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Colonne Services -->
+          <div class="footer__column">
+            <h4 class="footer__title">Services</h4>
+            <ul class="footer__links">
+              <li><a href="/services.html#qse" class="footer__link">Conseil QSE</a></li>
+              <li><a href="/services.html#rse" class="footer__link">Conseil RSE</a></li>
+              <li><a href="/services.html#audit" class="footer__link">Audit & Diagnostic</a></li>
+              <li><a href="/services.html#formation" class="footer__link">Formation</a></li>
+              <li><a href="/services.html#accompagnement" class="footer__link">Accompagnement</a></li>
+            </ul>
+          </div>
+
+          <!-- Colonne Contact -->
+          <div class="footer__column">
+            <h4 class="footer__title">Contact</h4>
+            <div class="footer__contact-list">
+              <div class="footer__contact-item">
+                <svg class="footer__contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <div class="footer__contact-text">
+                  <span class="footer__contact-label">Adresse</span>
+                  Douala, Cameroun
+                </div>
+              </div>
+              <a href="tel:+237600000000" class="footer__contact-item">
+                <svg class="footer__contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                <div class="footer__contact-text">
+                  <span class="footer__contact-label">Téléphone</span>
+                  +237 6 00 00 00 00
+                </div>
+              </a>
+              <a href="mailto:contact@laanfo-cm.com" class="footer__contact-item">
+                <svg class="footer__contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <div class="footer__contact-text">
+                  <span class="footer__contact-label">Email</span>
+                  contact@laanfo-cm.com
+                </div>
+              </a>
+            </div>
+
+            <!-- Réseaux sociaux -->
+            <div class="footer__social">
+              <a href="#" class="footer__social-link" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+              </a>
+              <a href="#" class="footer__social-link" aria-label="Twitter">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                </svg>
+              </a>
+              <a href="#" class="footer__social-link" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                </svg>
+              </a>
+              <a href="#" class="footer__social-link" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barre de copyright -->
+      <div class="footer__bottom">
+        <div class="footer__bottom-inner">
+          <p class="footer__copyright">
+            © 2026 <span class="footer__copyright-highlight">LAANFO C&M</span>. Tous droits réservés.
+          </p>
+          <div class="footer__legal">
+            <a href="/mentions-legales.html" class="footer__legal-link">Mentions légales</a>
+            <a href="/politique-confidentialite.html" class="footer__legal-link">Politique de confidentialité</a>
+            <a href="/cgv.html" class="footer__legal-link">CGV</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bouton retour en haut -->
+    <button class="footer__back-to-top" aria-label="Retour en haut de page">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+    </button>
+
+    <!-- Scripts -->
+    <script type="module" src="./scripts/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#2d2d2d"/>
+  <rect x="100" y="150" width="200" height="300" rx="10" fill="#d7bfa4" opacity="0.2"/>
+  <rect x="320" y="180" width="180" height="240" rx="10" fill="#d7bfa4" opacity="0.15"/>
+  <rect x="520" y="120" width="180" height="360" rx="10" fill="#d7bfa4" opacity="0.1"/>
+  <text x="400" y="540" font-family="Inter, sans-serif" font-size="16" fill="#d7bfa4" text-anchor="middle" opacity="0.5">Team Image - Replace</text>
+</svg>

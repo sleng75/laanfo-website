@@ -1,0 +1,325 @@
+/* ================================================
+   CUSTOM CURSOR
+
+   Curseur personnalisé premium avec effet magnétique,
+   états interactifs et animations fluides.
+   Activé via data-custom-cursor sur le body.
+   ================================================ */
+
+/* =============================================
+   BASE - Structure du curseur
+   ============================================= */
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99999;
+  mix-blend-mode: difference;
+}
+
+/* Point central (dot) */
+.custom-cursor__dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-gold-400);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.3s var(--ease-out),
+    height 0.3s var(--ease-out),
+    background-color 0.3s var(--ease-out),
+    opacity 0.3s var(--ease-out);
+}
+
+/* Cercle externe (follower) */
+.custom-cursor__circle {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-gold-400);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.5;
+  transition:
+    width 0.4s var(--ease-out),
+    height 0.4s var(--ease-out),
+    border-color 0.3s var(--ease-out),
+    border-width 0.3s var(--ease-out),
+    opacity 0.3s var(--ease-out),
+    background-color 0.3s var(--ease-out);
+}
+
+/* =============================================
+   ÉTATS - Interactions
+   ============================================= */
+
+/* État hover sur liens et boutons */
+.custom-cursor.is-hovering .custom-cursor__dot {
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-gold-300);
+}
+
+.custom-cursor.is-hovering .custom-cursor__circle {
+  width: 60px;
+  height: 60px;
+  border-width: 2px;
+  opacity: 0.8;
+}
+
+/* État actif (click) */
+.custom-cursor.is-clicking .custom-cursor__dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-gold-500);
+}
+
+.custom-cursor.is-clicking .custom-cursor__circle {
+  width: 30px;
+  height: 30px;
+  opacity: 1;
+  border-color: var(--color-gold-500);
+}
+
+/* État caché (hors fenêtre) */
+.custom-cursor.is-hidden .custom-cursor__dot,
+.custom-cursor.is-hidden .custom-cursor__circle {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
+}
+
+/* =============================================
+   ÉTATS SPÉCIAUX - Types d'éléments
+   ============================================= */
+
+/* Survol de texte */
+.custom-cursor.is-text .custom-cursor__dot {
+  width: 4px;
+  height: 20px;
+  border-radius: 2px;
+  background-color: var(--color-gold-400);
+}
+
+.custom-cursor.is-text .custom-cursor__circle {
+  width: 30px;
+  height: 30px;
+  opacity: 0.3;
+}
+
+/* Survol d'images ou médias */
+.custom-cursor.is-media .custom-cursor__dot {
+  width: 60px;
+  height: 60px;
+  background-color: transparent;
+  border: 2px solid var(--color-gold-400);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-cursor.is-media .custom-cursor__dot::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 12px solid var(--color-gold-400);
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  margin-left: 4px;
+}
+
+.custom-cursor.is-media .custom-cursor__circle {
+  width: 80px;
+  height: 80px;
+  opacity: 0.3;
+}
+
+/* Survol d'éléments désactivés */
+.custom-cursor.is-disabled .custom-cursor__dot {
+  background-color: var(--color-neutral-500);
+}
+
+.custom-cursor.is-disabled .custom-cursor__circle {
+  border-color: var(--color-neutral-500);
+  opacity: 0.3;
+}
+
+/* =============================================
+   LABELS - Texte dans le curseur
+   ============================================= */
+
+.custom-cursor__label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-gold-400);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s var(--ease-out);
+}
+
+.custom-cursor.has-label .custom-cursor__dot {
+  width: 80px;
+  height: 80px;
+  background-color: rgba(var(--color-gold-400-rgb, 212, 175, 55), 0.1);
+  backdrop-filter: blur(4px);
+}
+
+.custom-cursor.has-label .custom-cursor__circle {
+  width: 100px;
+  height: 100px;
+}
+
+.custom-cursor.has-label .custom-cursor__label {
+  opacity: 1;
+}
+
+/* =============================================
+   VARIANTE - Curseur inversé (fond clair)
+   ============================================= */
+
+.custom-cursor--inverted .custom-cursor__dot {
+  background-color: var(--color-neutral-900);
+}
+
+.custom-cursor--inverted .custom-cursor__circle {
+  border-color: var(--color-neutral-900);
+}
+
+/* =============================================
+   VARIANTE - Curseur blend
+   ============================================= */
+
+.custom-cursor--blend {
+  mix-blend-mode: exclusion;
+}
+
+.custom-cursor--blend .custom-cursor__dot {
+  background-color: white;
+}
+
+.custom-cursor--blend .custom-cursor__circle {
+  border-color: white;
+}
+
+/* =============================================
+   LIGHT MODE
+   ============================================= */
+
+[data-theme="light"] .custom-cursor__dot {
+  background-color: var(--color-gold-600);
+}
+
+[data-theme="light"] .custom-cursor__circle {
+  border-color: var(--color-gold-600);
+}
+
+[data-theme="light"] .custom-cursor.is-hovering .custom-cursor__dot {
+  background-color: var(--color-gold-500);
+}
+
+[data-theme="light"] .custom-cursor__label {
+  color: var(--color-gold-600);
+}
+
+/* =============================================
+   MASQUAGE DU CURSEUR NATIF
+   ============================================= */
+
+/* Masquer le curseur natif quand le custom cursor est actif */
+[data-custom-cursor] {
+  cursor: none !important;
+}
+
+[data-custom-cursor] *,
+[data-custom-cursor] a,
+[data-custom-cursor] button,
+[data-custom-cursor] input,
+[data-custom-cursor] textarea,
+[data-custom-cursor] select {
+  cursor: none !important;
+}
+
+/* =============================================
+   RESPONSIVE - Désactivé sur mobile/tactile
+   ============================================= */
+
+@media (hover: none), (pointer: coarse) {
+  .custom-cursor {
+    display: none !important;
+  }
+
+  [data-custom-cursor],
+  [data-custom-cursor] * {
+    cursor: auto !important;
+  }
+}
+
+/* =============================================
+   ACCESSIBILITÉ - Réduction des animations
+   ============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .custom-cursor {
+    display: none !important;
+  }
+
+  [data-custom-cursor],
+  [data-custom-cursor] * {
+    cursor: auto !important;
+  }
+}
+
+/* =============================================
+   ANIMATIONS KEYFRAMES
+   ============================================= */
+
+@keyframes cursor-pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+/* Animation de pulsation pour attirer l'attention */
+.custom-cursor.is-pulsing .custom-cursor__circle {
+  animation: cursor-pulse 1.5s ease-in-out infinite;
+}
+
+/* =============================================
+   TRAIL EFFECT - Effet de traînée (optionnel)
+   ============================================= */
+
+.custom-cursor__trail {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-gold-400);
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.custom-cursor.has-trail .custom-cursor__trail {
+  opacity: 0.3;
+  transition: opacity 0.1s;
+}
+
+/* Points de traînée avec opacité décroissante */
+.custom-cursor__trail:nth-child(1) { opacity: 0.25; }
+.custom-cursor__trail:nth-child(2) { opacity: 0.2; }
+.custom-cursor__trail:nth-child(3) { opacity: 0.15; }
+.custom-cursor__trail:nth-child(4) { opacity: 0.1; }
+.custom-cursor__trail:nth-child(5) { opacity: 0.05; }

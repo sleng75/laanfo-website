@@ -1,0 +1,201 @@
+/* ================================================
+   LAANFO C&M - Boutons Flottants
+
+   Boutons fixes sur le côté droit de l'écran :
+   - Toggle de thème (soleil/lune)
+   - Retour en haut de page
+   ================================================ */
+
+/* =============================================
+   CONTENEUR DES BOUTONS
+   ============================================= */
+
+.floating-buttons {
+  position: fixed;
+  bottom: var(--space-6);
+  right: var(--space-6);
+  z-index: var(--z-fixed);
+
+  /* Stack vertical */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+/* =============================================
+   BOUTON FLOTTANT (Base)
+   ============================================= */
+
+.floating-btn {
+  /* Reset */
+  appearance: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+
+  /* Dimensions */
+  width: 48px;
+  height: 48px;
+
+  /* Layout */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Apparence */
+  background-color: var(--bg-elevated);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-primary);
+  box-shadow: var(--shadow-lg);
+
+  /* Transition */
+  transition:
+    background-color var(--duration-normal) var(--ease-out),
+    border-color var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out),
+    opacity var(--duration-normal) var(--ease-out);
+}
+
+.floating-btn:hover {
+  background-color: var(--bg-tertiary);
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-accent);
+  transform: scale(1.1);
+}
+
+.floating-btn:active {
+  transform: scale(0.95);
+}
+
+/* Focus accessible */
+.floating-btn:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 3px;
+}
+
+/* =============================================
+   ICÔNES
+   ============================================= */
+
+.floating-btn__icon {
+  width: 22px;
+  height: 22px;
+  color: var(--text-primary);
+  transition:
+    opacity var(--duration-normal) var(--ease-out),
+    transform var(--duration-normal) var(--ease-out),
+    color var(--duration-normal) var(--ease-out);
+}
+
+/* =============================================
+   BOUTON THEME TOGGLE
+   ============================================= */
+
+.floating-btn--theme {
+  /* Position des icônes superposées */
+}
+
+.floating-btn--theme .floating-btn__icon {
+  position: absolute;
+}
+
+/* Soleil (affiché en mode sombre pour passer en clair) */
+.floating-btn__sun {
+  color: var(--color-quality-500);
+  opacity: 0;
+  transform: rotate(90deg) scale(0.5);
+}
+
+/* Lune (affichée en mode clair pour passer en sombre) */
+.floating-btn__moon {
+  color: var(--text-accent);
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+/* En mode sombre : montrer le soleil */
+[data-theme="dark"] .floating-btn__sun {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+[data-theme="dark"] .floating-btn__moon {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+
+/* Préférence système dark */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .floating-btn__sun {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+
+  :root:not([data-theme]) .floating-btn__moon {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.5);
+  }
+}
+
+/* =============================================
+   BOUTON RETOUR EN HAUT
+   ============================================= */
+
+.floating-btn--top {
+  /* Masqué par défaut, affiché au scroll */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+}
+
+.floating-btn--top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.floating-btn--top:hover .floating-btn__icon {
+  transform: var(--transform-lift-sm);
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+
+@media (max-width: 767px) {
+  .floating-buttons {
+    bottom: var(--space-4);
+    right: var(--space-4);
+    gap: var(--space-2);
+  }
+
+  .floating-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .floating-btn__icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* =============================================
+   ACCESSIBILITÉ - Réduction des animations
+   ============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-btn,
+  .floating-btn__icon,
+  .floating-btn--top {
+    transition: none;
+  }
+
+  .floating-btn--top.is-visible {
+    transform: none;
+  }
+}

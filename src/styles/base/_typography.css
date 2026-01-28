@@ -1,0 +1,232 @@
+/* ================================================
+   LAANFO C&M - Typographie
+
+   Système typographique avec Google Fonts et classes
+   utilitaires pour une utilisation cohérente.
+   ================================================ */
+
+/* Import des polices Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+/* ============================================
+   TITRES DISPLAY (Très grands titres - Hero)
+   Police : Playfair Display
+   ============================================ */
+
+.display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 6rem);  /* Responsive : min 48px, max 96px */
+  font-weight: var(--font-medium);
+  line-height: var(--leading-none);
+  letter-spacing: var(--tracking-tight);
+}
+
+.display-lg {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);  /* min 40px, max 72px */
+  font-weight: var(--font-medium);
+  line-height: var(--leading-none);
+  letter-spacing: var(--tracking-tight);
+}
+
+.display-md {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.75rem);  /* min 32px, max 60px */
+  font-weight: var(--font-medium);
+  line-height: var(--leading-tight);
+}
+
+/* ============================================
+   TITRES HEADING (Sous-titres de sections)
+   Police : Cormorant Garamond
+   ============================================ */
+
+.heading-1 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.875rem, 4vw, 3rem);  /* min 30px, max 48px */
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-tight);
+}
+
+.heading-2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);  /* min 24px, max 36px */
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-tight);
+}
+
+.heading-3 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 2.5vw, 1.875rem);  /* min 20px, max 30px */
+  font-weight: var(--font-medium);
+  line-height: var(--leading-snug);
+}
+
+.heading-4 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.125rem, 2vw, 1.5rem);  /* min 18px, max 24px */
+  font-weight: var(--font-medium);
+  line-height: var(--leading-snug);
+}
+
+.heading-5 {
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 1.5vw, 1.25rem);  /* min 16px, max 20px */
+  font-weight: var(--font-medium);
+  line-height: var(--leading-snug);
+}
+
+/* ============================================
+   TEXTE BODY (Texte courant)
+   Police : Inter
+   ============================================ */
+
+.body-xl {
+  font-family: var(--font-body);
+  font-size: var(--text-xl);  /* 20px */
+  font-weight: var(--font-normal);
+  line-height: var(--leading-relaxed);
+}
+
+.body-lg {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);  /* 18px */
+  font-weight: var(--font-normal);
+  line-height: var(--leading-relaxed);
+}
+
+.body-md {
+  font-family: var(--font-body);
+  font-size: var(--text-base);  /* 16px */
+  font-weight: var(--font-normal);
+  line-height: var(--leading-normal);
+}
+
+.body-sm {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);  /* 14px */
+  font-weight: var(--font-normal);
+  line-height: var(--leading-normal);
+}
+
+.body-xs {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);  /* 12px */
+  font-weight: var(--font-normal);
+  line-height: var(--leading-normal);
+}
+
+/* ============================================
+   TEXTE ACCENT (Labels, boutons, etc.)
+   Police : Montserrat
+   ============================================ */
+
+/* Label au-dessus des sections */
+.overline {
+  font-family: var(--font-accent);
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--text-accent);
+}
+
+/* Label pour les formulaires */
+.label {
+  font-family: var(--font-accent);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  letter-spacing: var(--tracking-wide);
+}
+
+/* Texte de bouton */
+.btn-text {
+  font-family: var(--font-accent);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+/* Caption (petits textes d'info) */
+.caption {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--font-normal);
+  color: var(--text-tertiary);
+}
+
+/* ============================================
+   STYLES SPÉCIAUX
+   ============================================ */
+
+/* Citation */
+.quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.5vw, 1.875rem);
+  font-style: italic;
+  font-weight: var(--font-normal);
+  line-height: var(--leading-relaxed);
+  color: var(--text-secondary);
+}
+
+/* Texte mis en évidence */
+.highlight {
+  color: var(--text-accent);
+}
+
+/* Texte avec dégradé (effet premium) */
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-quality) 50%,
+    var(--color-secondary) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ============================================
+   UTILITAIRES TYPOGRAPHIQUES
+   ============================================ */
+
+/* Alignement */
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+/* Poids */
+.font-light { font-weight: var(--font-light); }
+.font-normal { font-weight: var(--font-normal); }
+.font-medium { font-weight: var(--font-medium); }
+.font-semibold { font-weight: var(--font-semibold); }
+.font-bold { font-weight: var(--font-bold); }
+
+/* Couleurs de texte - sémantiques (s'adaptent au thème) */
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-tertiary { color: var(--text-tertiary); }
+.text-muted { color: var(--text-muted); }
+.text-accent { color: var(--text-accent); }
+.text-inverse { color: var(--text-inverse); }
+
+/* Couleurs de texte - fixes */
+.text-dark { color: var(--color-neutral-900); }
+.text-light { color: var(--color-neutral-100); }
+.text-white { color: var(--color-neutral-0); }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 639px) {
+  .body-xl {
+    font-size: var(--text-lg);
+  }
+
+  .body-lg {
+    font-size: var(--text-base);
+  }
+}

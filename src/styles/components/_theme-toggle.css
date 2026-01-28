@@ -1,0 +1,172 @@
+/* ================================================
+   LAANFO C&M - Theme Toggle (Bouton Light/Dark)
+
+   Bouton animé pour basculer entre les thèmes.
+   Affiche un soleil ou une lune selon le thème actuel.
+   ================================================ */
+
+/* =============================================
+   CONTENEUR DU TOGGLE
+   ============================================= */
+
+.theme-toggle {
+  /* Reset */
+  appearance: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+
+  /* Dimensions */
+  width: 44px;
+  height: 44px;
+
+  /* Layout */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Apparence */
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-primary);
+
+  /* Transition */
+  transition:
+    background-color var(--duration-normal) var(--ease-out),
+    border-color var(--duration-normal) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+
+  /* Z-index pour rester au-dessus */
+  z-index: var(--z-theme-toggle);
+}
+
+.theme-toggle:hover {
+  background-color: var(--bg-tertiary);
+  transform: scale(1.05);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Focus accessible */
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* =============================================
+   ICÔNES (Soleil et Lune)
+   ============================================= */
+
+.theme-toggle__icon {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  transition:
+    opacity var(--duration-normal) var(--ease-out),
+    transform var(--duration-normal) var(--ease-out);
+}
+
+/* Soleil */
+.theme-toggle__sun {
+  color: var(--color-quality-500);
+  opacity: 0;
+  transform: rotate(90deg) scale(0.5);
+}
+
+/* Lune */
+.theme-toggle__moon {
+  color: var(--text-secondary);
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+/* =============================================
+   ÉTATS SELON LE THÈME
+   ============================================= */
+
+/* En mode sombre : montrer le soleil */
+[data-theme="dark"] .theme-toggle__sun {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+[data-theme="dark"] .theme-toggle__moon {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+
+/* =============================================
+   VARIANTE DANS LE HEADER
+   ============================================= */
+
+.header .theme-toggle {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.header .theme-toggle:hover {
+  background-color: var(--bg-secondary);
+}
+
+/* Sur header transparent (hero) */
+.header--transparent:not(.is-scrolled) .theme-toggle {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.header--transparent:not(.is-scrolled) .theme-toggle__moon {
+  color: var(--color-neutral-0);
+}
+
+/* =============================================
+   VARIANTE FIXE (coin de l'écran)
+   ============================================= */
+
+.theme-toggle--fixed {
+  position: fixed;
+  bottom: var(--space-6);
+  right: var(--space-6);
+  z-index: var(--z-theme-toggle);
+
+  /* Ombre pour détacher du contenu */
+  box-shadow: var(--shadow-lg);
+}
+
+/* =============================================
+   VARIANTE COMPACTE
+   ============================================= */
+
+.theme-toggle--sm {
+  width: 36px;
+  height: 36px;
+}
+
+.theme-toggle--sm .theme-toggle__icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+
+@media (max-width: 639px) {
+  .theme-toggle--fixed {
+    bottom: var(--space-4);
+    right: var(--space-4);
+  }
+}
+
+/* =============================================
+   ACCESSIBILITÉ - Réduction des animations
+   ============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle,
+  .theme-toggle__icon {
+    transition: none;
+  }
+}

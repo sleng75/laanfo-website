@@ -1,0 +1,440 @@
+/* ================================================
+   LAANFO C&M - Styles Page À propos
+
+   Sections spécifiques à la page À propos :
+   - Founder Section (présentation fondateur)
+   - Timeline (parcours)
+   - Mission Section
+   - Team Section (si équipe)
+
+   Note: Le Page Header a été déplacé vers
+   components/_page-header.css pour réutilisation
+   ================================================ */
+
+/* =============================================
+   FOUNDER SECTION - Présentation du fondateur
+   ============================================= */
+
+.founder {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .founder {
+    grid-template-columns: 400px 1fr;
+    gap: var(--space-16);
+  }
+}
+
+/* Image du fondateur */
+.founder__image-wrapper {
+  position: relative;
+}
+
+.founder__image {
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Cadre décoratif */
+.founder__image-wrapper::before {
+  content: '';
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  right: calc(var(--space-4) * -1);
+  bottom: calc(var(--space-4) * -1);
+  border: 2px solid var(--color-gold-400);
+  border-radius: var(--radius-xl);
+  z-index: -1;
+}
+
+/* Contenu */
+.founder__content {
+  max-width: 600px;
+}
+
+.founder__name {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-medium);
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.founder__role {
+  font-family: var(--font-accent);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--text-accent);
+  margin-bottom: var(--space-6);
+}
+
+.founder__bio {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-6);
+}
+
+.founder__quote {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-style: italic;
+  color: var(--text-primary);
+  padding-left: var(--space-6);
+  border-left: 3px solid var(--color-gold-400);
+  margin-bottom: var(--space-6);
+}
+
+/* Social links du fondateur */
+.founder__social {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.founder__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  color: var(--text-secondary);
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out);
+}
+
+.founder__social-link:hover {
+  color: var(--text-accent);
+  border-color: var(--border-accent);
+  background-color: var(--bg-accent-subtle);
+}
+
+.founder__social-link svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* =============================================
+   TIMELINE - Parcours chronologique
+   ============================================= */
+
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Ligne centrale */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    var(--color-gold-400) 0%,
+    var(--border-primary) 100%
+  );
+}
+
+/* Item de la timeline */
+.timeline__item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: var(--space-12);
+}
+
+.timeline__item:last-child {
+  margin-bottom: 0;
+}
+
+/* Alternance gauche/droite */
+.timeline__item:nth-child(odd) {
+  flex-direction: row;
+  padding-right: calc(50% + var(--space-8));
+  text-align: right;
+}
+
+.timeline__item:nth-child(even) {
+  flex-direction: row-reverse;
+  padding-left: calc(50% + var(--space-8));
+  text-align: left;
+}
+
+/* Point sur la timeline */
+.timeline__dot {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 16px;
+  background-color: var(--color-gold-400);
+  border: 3px solid var(--bg-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px var(--color-gold-alpha-30);
+  z-index: 2;
+}
+
+/* Contenu de l'item */
+.timeline__content {
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-md);
+  transition:
+    transform var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.timeline__content:hover {
+  transform: var(--transform-lift-md);
+  box-shadow: var(--shadow-lg);
+}
+
+.timeline__year {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--text-accent);
+  margin-bottom: var(--space-2);
+}
+
+.timeline__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.timeline__description {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+/* =============================================
+   MISSION SECTION
+   ============================================= */
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+@media (min-width: 768px) {
+  .mission-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.mission-card {
+  padding: var(--space-8);
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  transition:
+    border-color var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.mission-card:hover {
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-accent);
+}
+
+.mission-card__icon {
+  width: 48px;
+  height: 48px;
+  color: var(--text-accent);
+  margin-bottom: var(--space-4);
+}
+
+.mission-card__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.mission-card__description {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+/* =============================================
+   EXPERTISE SECTION - Liste des compétences
+   ============================================= */
+
+.expertise-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-6);
+}
+
+.expertise-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  transition: border-color var(--duration-fast) var(--ease-out);
+}
+
+.expertise-item:hover {
+  border-color: var(--border-accent);
+}
+
+.expertise-item__icon {
+  width: 24px;
+  height: 24px;
+  color: var(--text-accent);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.expertise-item__content {
+  flex: 1;
+}
+
+.expertise-item__title {
+  font-family: var(--font-accent);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-1);
+}
+
+.expertise-item__description {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+/* =============================================
+   CERTIFICATIONS SECTION
+   ============================================= */
+
+.certifications-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-6);
+}
+
+.certification-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  min-width: 150px;
+  transition:
+    transform var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.certification-badge:hover {
+  transform: var(--transform-lift-md);
+  box-shadow: var(--shadow-lg);
+}
+
+.certification-badge__icon {
+  width: 48px;
+  height: 48px;
+  color: var(--text-accent);
+}
+
+.certification-badge__name {
+  font-family: var(--font-accent);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.certification-badge__description {
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  text-align: center;
+}
+
+/* =============================================
+   RESPONSIVE - Timeline mobile
+   ============================================= */
+
+@media (max-width: 767px) {
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timeline__item,
+  .timeline__item:nth-child(odd),
+  .timeline__item:nth-child(even) {
+    flex-direction: row;
+    padding-left: var(--space-12);
+    padding-right: 0;
+    text-align: left;
+  }
+
+  .timeline__dot {
+    left: 20px;
+  }
+
+  .founder__image-wrapper::before {
+    display: none;
+  }
+
+  .founder__image {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
+
+/* =============================================
+   ACCESSIBILITÉ - Réduction des animations
+   ============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .timeline__content,
+  .mission-card,
+  .certification-badge {
+    transition: none;
+  }
+
+  .timeline__content:hover,
+  .certification-badge:hover {
+    transform: none;
+  }
+}

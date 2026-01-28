@@ -1,0 +1,49 @@
+# =====================================================
+# LAANFO Conseil & Management - robots.txt
+# https://www.laanfo-cm.com
+# =====================================================
+
+# Autoriser tous les robots
+User-agent: *
+
+# Autoriser l'accès à toutes les pages
+Allow: /
+
+# Bloquer les dossiers non pertinents pour le SEO
+Disallow: /assets/
+Disallow: /scripts/
+Disallow: /styles/
+Disallow: /components/
+
+# Bloquer les fichiers de test
+Disallow: /test-components.html
+
+# Délai entre les requêtes (en secondes) - respectueux des serveurs
+Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://www.laanfo-cm.com/sitemap.xml
+
+# =====================================================
+# Règles spécifiques pour les robots majeurs
+# =====================================================
+
+# Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Bloquer les bots indésirables
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /

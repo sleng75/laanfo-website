@@ -1,0 +1,9 @@
+# =====================================================
+# LAANFO C&M - Redirections (Netlify)
+# =====================================================
+
+# Redirection de l'index
+/index.html    /    301
+
+# Pages d'erreur
+/*    /index.html    200

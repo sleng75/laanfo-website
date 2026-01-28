@@ -1,0 +1,375 @@
+/* ================================================
+   LAANFO C&M - Accessibilité (WCAG 2.1 AA)
+
+   Ce fichier centralise tous les styles liés à l'accessibilité :
+   - Navigation au clavier (focus visible)
+   - Skip links
+   - Indicateurs visuels pour lecteurs d'écran
+   - Support prefers-reduced-motion
+   - Contraste amélioré
+   ================================================ */
+
+/* =============================================
+   SKIP LINKS - Liens d'accès rapide
+   Permettent aux utilisateurs clavier de sauter
+   directement au contenu principal
+   ============================================= */
+
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: var(--space-4);
+  z-index: calc(var(--z-fixed) + 100);
+  padding: var(--space-3) var(--space-6);
+  background-color: var(--bg-elevated);
+  color: var(--text-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  text-decoration: none;
+  border: 2px solid var(--border-focus);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  transition: top 0.2s ease-out;
+}
+
+.skip-link:focus {
+  top: var(--space-4);
+  outline: none;
+}
+
+/* =============================================
+   FOCUS VISIBLE - Indicateurs de focus améliorés
+   ============================================= */
+
+/* Style de focus par défaut - déjà dans reset.css mais renforcé ici */
+:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Focus sur éléments interactifs avec animation subtile */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+[tabindex="0"]:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.2);
+}
+
+/* Focus sur les inputs - style inline */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
+  border-color: var(--border-focus) !important;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+}
+
+/* Focus sur les cartes et conteneurs cliquables */
+.card:focus-visible,
+[data-lift]:focus-visible,
+[data-tilt]:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 4px;
+  box-shadow: 0 0 0 6px rgba(212, 175, 55, 0.15);
+}
+
+/* =============================================
+   NAVIGATION AU CLAVIER
+   ============================================= */
+
+/* Indicateur visuel pour l'élément actuellement focusé dans les menus */
+.nav__item:focus-within > .nav__link {
+  color: var(--color-gold-400);
+}
+
+/* Sous-menu ouvert au focus */
+.nav__item:focus-within > .nav__dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Mobile menu - navigation au clavier */
+.mobile-menu__link:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 4px;
+  background-color: rgba(212, 175, 55, 0.1);
+}
+
+/* Accordéon FAQ - focus */
+.faq__question:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+  background-color: rgba(212, 175, 55, 0.05);
+}
+
+/* =============================================
+   SCREEN READER ONLY - Contenu pour lecteurs d'écran
+   ============================================= */
+
+/* Déjà dans reset.css, mais ajoutons des variantes utiles */
+.sr-only,
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Visible uniquement au focus (pour skip links) */
+.sr-only-focusable:focus,
+.sr-only-focusable:active {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  padding: inherit !important;
+  margin: inherit !important;
+  overflow: visible !important;
+  clip: auto !important;
+  white-space: normal !important;
+}
+
+/* =============================================
+   ARIA LIVE REGIONS - Annonces dynamiques
+   ============================================= */
+
+/* Région pour les annonces de formulaire */
+.aria-live-region {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Messages d'état visibles */
+.form-status {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+}
+
+.form-status--success {
+  background-color: rgba(34, 197, 94, 0.1);
+  color: var(--color-safety);
+  border: 1px solid var(--color-safety);
+}
+
+.form-status--error {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid #ef4444;
+}
+
+/* =============================================
+   CONTRASTE AMÉLIORÉ - Mode high contrast
+   ============================================= */
+
+@media (prefers-contrast: more) {
+  :root {
+    --text-primary: #ffffff;
+    --text-secondary: #e5e5e5;
+    --bg-primary: #000000;
+    --border-default: #ffffff;
+    --border-focus: #ffcc00;
+  }
+
+  /* Bordures plus visibles */
+  .card,
+  .btn,
+  input,
+  textarea,
+  select {
+    border-width: 2px;
+  }
+
+  /* Liens soulignés par défaut */
+  a:not(.btn):not(.card__link) {
+    text-decoration: underline;
+  }
+}
+
+/* =============================================
+   PREFERS REDUCED MOTION - Déjà dans reset.css
+   mais ajoutons des spécificités ici
+   ============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  /* Désactiver les animations de scroll */
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  /* Supprimer les animations GSAP via classe */
+  [data-animate],
+  [data-parallax],
+  [data-lift],
+  [data-magnetic],
+  [data-tilt],
+  [data-counter] {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  /* Garder les transitions de focus pour l'accessibilité */
+  :focus-visible {
+    transition: outline-offset 0.1s ease;
+  }
+
+  /* Désactiver le preloader */
+  .preloader {
+    display: none !important;
+  }
+
+  /* Désactiver les transitions de page */
+  .page-transition {
+    display: none !important;
+  }
+
+  /* Désactiver le scroll smooth de Lenis */
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =============================================
+   INDICATEURS D'ÉTAT
+   ============================================= */
+
+/* État disabled */
+[disabled],
+[aria-disabled="true"],
+.is-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* État loading */
+[aria-busy="true"],
+.is-loading {
+  cursor: wait;
+}
+
+/* État expanded/collapsed */
+[aria-expanded="true"] > .icon-chevron {
+  transform: rotate(180deg);
+}
+
+/* État selected */
+[aria-selected="true"],
+[aria-current="page"] {
+  position: relative;
+}
+
+[aria-current="page"]::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--color-gold-400);
+}
+
+/* =============================================
+   RESPONSIVE TOUCH TARGETS
+   Taille minimum de 44x44px pour les zones tactiles
+   ============================================= */
+
+@media (pointer: coarse) {
+  /* Agrandir les zones cliquables sur écrans tactiles */
+  a,
+  button,
+  input[type="checkbox"],
+  input[type="radio"],
+  select {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Espacement plus grand entre les éléments interactifs */
+  .nav__item {
+    padding: var(--space-3) 0;
+  }
+
+  /* Boutons plus grands */
+  .btn--sm {
+    padding: var(--space-3) var(--space-4);
+  }
+}
+
+/* =============================================
+   FOCUS TRAP INDICATOR
+   Indique quand le focus est piégé (modales)
+   ============================================= */
+
+[aria-modal="true"],
+[data-focus-trap] {
+  /* Bordure subtile pour indiquer la zone de focus */
+}
+
+[aria-modal="true"]:focus-within {
+  box-shadow: 0 0 0 2px var(--border-focus);
+}
+
+/* =============================================
+   DARK MODE - Ajustements d'accessibilité
+   ============================================= */
+
+[data-theme="dark"] {
+  /* Contraste du texte secondaire amélioré en dark mode */
+  --text-secondary: var(--color-neutral-300);
+  --text-muted: var(--color-neutral-400);
+}
+
+/* =============================================
+   PRINT STYLES - Pour l'impression
+   ============================================= */
+
+@media print {
+  /* Masquer les éléments non essentiels */
+  .header,
+  .footer,
+  .preloader,
+  .page-transition,
+  .floating-buttons,
+  .skip-link,
+  [data-component="mobile-menu"] {
+    display: none !important;
+  }
+
+  /* Afficher les URLs des liens */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+
+  /* Couleurs en noir et blanc */
+  * {
+    color: #000 !important;
+    background: #fff !important;
+    box-shadow: none !important;
+  }
+
+  /* Éviter les coupures de page inappropriées */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+
+  img, table, figure {
+    page-break-inside: avoid;
+  }
+}

@@ -1,0 +1,412 @@
+/* ================================================
+   LAANFO C&M - Composant Forms
+
+   Système de formulaires avec :
+   - Input avec label flottant (floating label)
+   - Textarea
+   - Select custom
+   - Checkbox/Radio
+   - États de validation (success, error)
+   - Support Light/Dark mode via tokens sémantiques
+   ================================================ */
+
+/* =============================================
+   FORM GROUP - Conteneur pour chaque champ
+
+   Le form-group encapsule un label + input + message d'erreur.
+   C'est l'unité de base du formulaire.
+   ============================================= */
+
+.form-group {
+  position: relative;
+  margin-bottom: var(--space-6);
+}
+
+/* Version avec label flottant */
+.form-group--floating {
+  margin-top: var(--space-4);
+}
+
+/* =============================================
+   LABELS
+   ============================================= */
+
+.form-label {
+  display: block;
+  font-family: var(--font-accent);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-2);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+/* Label requis (astérisque) */
+.form-label--required::after {
+  content: ' *';
+  color: var(--color-error);
+}
+
+/* Label flottant */
+.form-group--floating .form-label {
+  position: absolute;
+  left: var(--space-4);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: var(--text-base);
+  color: var(--input-placeholder);
+  pointer-events: none;
+  transition:
+    top var(--duration-fast) var(--ease-out),
+    left var(--duration-fast) var(--ease-out),
+    font-size var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out);
+  background-color: transparent;
+  padding: 0 var(--space-1);
+  margin: 0;
+}
+
+/* Label flottant - état actif (quand focus ou valeur) */
+.form-group--floating.is-focused .form-label,
+.form-group--floating.has-value .form-label {
+  top: 0;
+  left: var(--space-3);
+  font-size: var(--text-xs);
+  color: var(--text-accent);
+  background-color: var(--input-bg);
+}
+
+/* Pour textarea, le label reste en haut */
+.form-group--floating:has(textarea) .form-label {
+  top: var(--space-4);
+  transform: none;
+}
+
+.form-group--floating.is-focused:has(textarea) .form-label,
+.form-group--floating.has-value:has(textarea) .form-label {
+  top: -0.75rem;
+}
+
+/* =============================================
+   INPUTS & TEXTAREA
+   ============================================= */
+
+.form-input,
+.form-textarea,
+.form-select {
+  /* Reset */
+  appearance: none;
+  border: none;
+  background: none;
+
+  /* Dimensions */
+  width: 100%;
+  padding: var(--space-4);
+
+  /* Typographie */
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--text-primary);
+  line-height: var(--leading-normal);
+
+  /* Apparence */
+  background-color: var(--input-bg);
+  border: 2px solid var(--input-border);
+  border-radius: var(--radius-md);
+
+  /* Transition */
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out);
+}
+
+/* Placeholder */
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--input-placeholder);
+}
+
+/* Focus */
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  outline: none;
+  border-color: var(--input-border-focus);
+  box-shadow: 0 0 0 3px var(--color-gold-alpha-30);
+}
+
+/* Disabled */
+.form-input:disabled,
+.form-textarea:disabled,
+.form-select:disabled {
+  background-color: var(--bg-tertiary);
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+/* Input avec label flottant - padding ajusté */
+.form-group--floating .form-input,
+.form-group--floating .form-textarea {
+  padding-top: var(--space-5);
+  padding-bottom: var(--space-3);
+}
+
+/* Textarea */
+.form-textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+/* =============================================
+   SELECT CUSTOM
+   ============================================= */
+
+.form-select {
+  padding-right: var(--space-10);
+  cursor: pointer;
+
+  /* Flèche custom - couleur adaptative */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23737373' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-3) center;
+  background-size: 20px;
+}
+
+[data-theme="dark"] .form-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23A3A3A3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+.form-select:focus {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23d7bfa4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+/* =============================================
+   CHECKBOX & RADIO
+   ============================================= */
+
+.form-check {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  cursor: pointer;
+  margin-bottom: var(--space-3);
+}
+
+.form-check__input {
+  /* Reset */
+  appearance: none;
+  margin: 0;
+
+  /* Dimensions */
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+
+  /* Apparence */
+  background-color: var(--input-bg);
+  border: 2px solid var(--input-border);
+  cursor: pointer;
+
+  /* Transition */
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+/* Checkbox = carré arrondi */
+.form-check__input[type="checkbox"] {
+  border-radius: var(--radius-sm);
+}
+
+/* Radio = cercle */
+.form-check__input[type="radio"] {
+  border-radius: 50%;
+}
+
+/* Checked */
+.form-check__input:checked {
+  background-color: var(--color-gold-400);
+  border-color: var(--color-gold-400);
+}
+
+/* Checkbox checked - coche */
+.form-check__input[type="checkbox"]:checked {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23171717' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Radio checked - point */
+.form-check__input[type="radio"]:checked {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Ccircle cx='5' cy='5' r='5' fill='%23171717'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Focus */
+.form-check__input:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* Label du checkbox/radio */
+.form-check__label {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  line-height: var(--leading-normal);
+}
+
+/* =============================================
+   ÉTATS DE VALIDATION
+   ============================================= */
+
+/* État valide */
+.form-input.is-valid,
+.form-textarea.is-valid,
+.form-select.is-valid {
+  border-color: var(--color-success);
+}
+
+.form-input.is-valid:focus,
+.form-textarea.is-valid:focus {
+  box-shadow: 0 0 0 3px var(--color-success-alpha-20);
+}
+
+/* État invalide */
+.form-input.is-invalid,
+.form-textarea.is-invalid,
+.form-select.is-invalid {
+  border-color: var(--color-error);
+}
+
+.form-input.is-invalid:focus,
+.form-textarea.is-invalid:focus {
+  box-shadow: 0 0 0 3px var(--color-error-alpha-20);
+}
+
+/* Message d'erreur */
+.form-error {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-error);
+  margin-top: var(--space-2);
+}
+
+/* Message de succès */
+.form-success {
+  display: none;
+  padding: var(--space-4);
+  background-color: rgba(34, 197, 94, 0.1);
+  border: 1px solid var(--color-success);
+  border-radius: var(--radius-md);
+  color: var(--color-success);
+  text-align: center;
+  margin-top: var(--space-4);
+}
+
+.form-success.is-visible {
+  display: block;
+}
+
+/* Message d'erreur global */
+.form-error-global {
+  display: none;
+  padding: var(--space-4);
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid var(--color-error);
+  border-radius: var(--radius-md);
+  color: var(--color-error);
+  text-align: center;
+  margin-bottom: var(--space-4);
+}
+
+.form-error-global.is-visible {
+  display: block;
+}
+
+/* =============================================
+   FORMULAIRE COMPLET
+   ============================================= */
+
+.form {
+  max-width: 600px;
+}
+
+.form--centered {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Ligne de formulaire (plusieurs champs côte à côte) */
+.form-row {
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .form-row--2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Aide sous le champ */
+.form-hint {
+  display: block;
+  font-size: var(--text-sm);
+  color: var(--text-tertiary);
+  margin-top: var(--space-1);
+}
+
+/* =============================================
+   INPUT AVEC ICÔNE
+   ============================================= */
+
+.form-group--icon {
+  position: relative;
+}
+
+.form-group--icon .form-input {
+  padding-left: var(--space-12);
+}
+
+.form-group--icon .form-icon {
+  position: absolute;
+  left: var(--space-4);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+
+@media (max-width: 639px) {
+  .form-input,
+  .form-textarea,
+  .form-select {
+    font-size: 16px; /* Évite le zoom sur iOS */
+  }
+}
+
+/* =============================================
+   ACCESSIBILITÉ - Réduction des animations
+   ============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .form-input,
+  .form-textarea,
+  .form-select,
+  .form-check__input,
+  .form-label {
+    transition: none;
+  }
+}

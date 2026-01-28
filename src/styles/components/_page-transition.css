@@ -1,0 +1,405 @@
+/* ================================================
+   PAGE TRANSITION PREMIUM
+
+   Overlay animé sophistiqué pour les transitions entre pages.
+   Comprend :
+   - Multi-layers avec effet de vague
+   - Logo avec anneaux rotatifs
+   - Texte de marque animé
+   - Particules décoratives
+   - Barre de progression
+   - Effet de glow
+   ================================================ */
+
+.page-transition {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.page-transition.is-active {
+  pointer-events: all;
+  visibility: visible;
+}
+
+/* =============================================
+   BACKGROUND - Fond avec blur
+   ============================================= */
+
+.page-transition__bg {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(0px);
+  opacity: 0;
+  z-index: 0;
+}
+
+/* =============================================
+   LAYERS - Couches de transition
+   ============================================= */
+
+.page-transition__layer {
+  position: absolute;
+  inset: 0;
+  transform: scaleY(0);
+  transform-origin: bottom center;
+  will-change: transform;
+}
+
+/* Layer 1 - Plus sombre (fond) */
+.page-transition__layer--1 {
+  background-color: var(--color-neutral-950);
+  z-index: 1;
+}
+
+/* Layer 2 - Accent doré avec gradient */
+.page-transition__layer--2 {
+  background: linear-gradient(
+    135deg,
+    var(--color-gold-700) 0%,
+    var(--color-gold-500) 50%,
+    var(--color-gold-400) 100%
+  );
+  z-index: 2;
+}
+
+/* Layer 3 - Plus clair (devant) */
+.page-transition__layer--3 {
+  background-color: var(--color-neutral-900);
+  z-index: 3;
+}
+
+/* =============================================
+   GLOW - Effet de lueur
+   ============================================= */
+
+.page-transition__glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(212, 175, 55, 0.3) 0%,
+    rgba(212, 175, 55, 0.1) 40%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  z-index: 4;
+  opacity: 0;
+  pointer-events: none;
+  filter: blur(20px);
+}
+
+/* =============================================
+   CONTENT - Conteneur central
+   ============================================= */
+
+.page-transition__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+/* =============================================
+   LOGO - Logo avec anneaux
+   ============================================= */
+
+.page-transition__logo-wrapper {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-transition__logo-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--color-gold-400);
+  opacity: 0;
+}
+
+.page-transition__logo-ring--outer {
+  width: 120px;
+  height: 120px;
+  border-style: dashed;
+  border-color: var(--color-gold-500);
+}
+
+.page-transition__logo-ring--inner {
+  width: 100px;
+  height: 100px;
+  border-width: 2px;
+  border-color: var(--color-gold-400);
+}
+
+.page-transition__logo {
+  width: 90px;
+  height: 74px;
+  color: var(--color-gold-400);
+  opacity: 0;
+}
+
+.page-transition__logo svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Animation de pulsation du logo */
+.page-transition.is-active .page-transition__logo {
+  animation: transition-logo-pulse 2s ease-in-out infinite;
+}
+
+@keyframes transition-logo-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.6));
+  }
+}
+
+/* =============================================
+   TEXT - Texte de marque
+   ============================================= */
+
+.page-transition__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.page-transition__text-line {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  color: var(--color-gold-400);
+  text-transform: uppercase;
+  opacity: 0;
+}
+
+.page-transition__text-sub {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  color: var(--color-neutral-400);
+  text-transform: uppercase;
+  opacity: 0;
+}
+
+/* =============================================
+   PROGRESS - Barre de progression
+   ============================================= */
+
+.page-transition__progress {
+  position: relative;
+  width: 120px;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 1px;
+  overflow: visible;
+}
+
+.page-transition__progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--color-gold-600) 0%,
+    var(--color-gold-400) 100%
+  );
+  border-radius: 1px;
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+.page-transition__progress-dot {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-gold-400);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow:
+    0 0 10px rgba(212, 175, 55, 0.5),
+    0 0 20px rgba(212, 175, 55, 0.3);
+  opacity: 0;
+}
+
+/* =============================================
+   PARTICLES - Particules décoratives
+   ============================================= */
+
+.page-transition__particles {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.page-transition__particle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: var(--color-gold-400);
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 6px rgba(212, 175, 55, 0.5);
+}
+
+/* =============================================
+   VARIANTE LIGHT MODE
+   ============================================= */
+
+[data-theme="light"] .page-transition__bg {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="light"] .page-transition__layer--1 {
+  background-color: var(--color-neutral-100);
+}
+
+[data-theme="light"] .page-transition__layer--2 {
+  background: linear-gradient(
+    135deg,
+    var(--color-gold-400) 0%,
+    var(--color-gold-500) 50%,
+    var(--color-gold-600) 100%
+  );
+}
+
+[data-theme="light"] .page-transition__layer--3 {
+  background-color: var(--color-neutral-0);
+}
+
+[data-theme="light"] .page-transition__glow {
+  background: radial-gradient(
+    circle,
+    rgba(212, 175, 55, 0.4) 0%,
+    rgba(212, 175, 55, 0.15) 40%,
+    transparent 70%
+  );
+}
+
+[data-theme="light"] .page-transition__logo {
+  color: var(--color-gold-600);
+}
+
+[data-theme="light"] .page-transition__logo-ring {
+  border-color: var(--color-gold-600);
+}
+
+[data-theme="light"] .page-transition__logo-ring--outer {
+  border-color: var(--color-gold-500);
+}
+
+[data-theme="light"] .page-transition__text-line {
+  color: var(--color-gold-600);
+}
+
+[data-theme="light"] .page-transition__text-sub {
+  color: var(--color-neutral-600);
+}
+
+[data-theme="light"] .page-transition__progress {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .page-transition__progress-bar {
+  background: linear-gradient(
+    90deg,
+    var(--color-gold-500) 0%,
+    var(--color-gold-600) 100%
+  );
+}
+
+[data-theme="light"] .page-transition__progress-dot {
+  background-color: var(--color-gold-600);
+  box-shadow:
+    0 0 10px rgba(212, 175, 55, 0.6),
+    0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+[data-theme="light"] .page-transition__particle {
+  background-color: var(--color-gold-600);
+  box-shadow: 0 0 6px rgba(212, 175, 55, 0.6);
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+
+@media (max-width: 640px) {
+  .page-transition__logo-wrapper {
+    width: 100px;
+    height: 100px;
+  }
+
+  .page-transition__logo-ring--outer {
+    width: 100px;
+    height: 100px;
+  }
+
+  .page-transition__logo-ring--inner {
+    width: 80px;
+    height: 80px;
+  }
+
+  .page-transition__logo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .page-transition__text-line {
+    font-size: 1.25rem;
+    letter-spacing: 0.2em;
+  }
+
+  .page-transition__text-sub {
+    font-size: 0.625rem;
+  }
+
+  .page-transition__progress {
+    width: 100px;
+  }
+
+  .page-transition__glow {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+/* =============================================
+   ACCESSIBILITÉ
+   ============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .page-transition {
+    display: none;
+  }
+}
